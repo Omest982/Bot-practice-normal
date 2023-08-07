@@ -2,6 +2,7 @@ package org.example.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.service.MainService;
 import org.example.service.UpdateConsumer;
 import org.example.service.AnswerProducer;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -16,14 +17,12 @@ import static org.example.model.RabbitQueue.*;
 @Slf4j
 public class UpdateConsumerImpl implements UpdateConsumer {
 
-    private final AnswerProducer answerProducer;
+    private final MainService mainService;
     @Override
     @RabbitListener(queues = TEXT_MESSAGE_UPDATE)
     public void consumeTextMessage(Update update) {
         log.info("NODE : TEXT MESSAGE RECEIVED");
-        answerProducer.produceAnswer(new SendMessage(
-                String.valueOf(update.getMessage().getChatId()),
-                "NODE : TEXT MESSAGE RECEIVED"));
+        mainService.processTextMessage(update);
     }
 
     @Override
