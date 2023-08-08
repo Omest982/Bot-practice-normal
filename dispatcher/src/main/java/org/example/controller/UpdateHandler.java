@@ -32,11 +32,11 @@ public class UpdateHandler {
 
     public void handleUpdateByType(Update update){
         Message message = update.getMessage();
-        if(message.getText() != null){
+        if(message.hasText()){
             handleTextMessage(update);
-        } else if (message.getDocument() != null){
+        } else if (message.hasDocument()){
             handleDocMessage(update);
-        } else if (message.getPhoto() != null) {
+        } else if (message.hasPhoto()) {
             handlePhotoMessage(update);
         }else{
             telegramBot.sendMessage(update, "Unsupported message type!");
