@@ -44,7 +44,7 @@ public class UpdateHandler {
     }
 
     public void sendFileIsReceived(Update update){
-        telegramBot.sendMessage(update, "File is processing...");
+        telegramBot.sendMessage(update, "Файл обрабатывается...");
     }
 
     public void sendMessage(SendMessage sendMessage){
