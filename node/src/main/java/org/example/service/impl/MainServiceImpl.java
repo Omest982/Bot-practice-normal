@@ -2,13 +2,16 @@ package org.example.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.entity.AppDocument;
 import org.example.entity.AppUser;
 import org.example.entity.RawData;
 import org.example.entity.enums.UserStatus;
 import org.example.repository.AppUserRepository;
 import org.example.repository.RawDataRepository;
 import org.example.service.AnswerProducer;
+import org.example.service.FileService;
 import org.example.service.MainService;
+import org.example.service.enums.BotCommands;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -25,6 +28,8 @@ public class MainServiceImpl implements MainService {
     private final RawDataRepository rawDataRepository;
     private final AppUserRepository appUserRepository;
     private final AnswerProducer answerProducer;
+    private final FileService fileService;
+
     @Override
     public void processTextMessage(Update update) {
         saveRawData(update);
@@ -33,10 +38,11 @@ public class MainServiceImpl implements MainService {
         Long chatId = update.getMessage().getChatId();
         String result = "";
 
-        if (CANCEL.equals(text)){
+        BotCommands command = BotCommands.fromValue(text);
+        if (CANCEL.equals(command)){
             result = cancelProcess(appUser);
         } else if (BASIC_STATUS.equals(appUser.getStatus())) {
-            result = processServiceCommand(appUser, text);
+            result = processServiceCommand(appUser, command);
         }else if(WAIT_FOR_EMAIL_STATUS.equals(appUser.getStatus())){
             //TODO Добавить обработку емейла
         } else {
@@ -55,9 +61,16 @@ public class MainServiceImpl implements MainService {
         if(isNotAllowedToSendContent(chatId, appUser)){
             return;
         }
-        //TODO Добавить сохранение документа!
-        String answer = "Документ успешно загружен!";
-        sendMessage(chatId, answer);
+
+        try{
+            AppDocument appDocument = fileService.processDoc(update.getMessage());
+            String answer = "Документ успешно загружен!";
+            sendMessage(chatId, answer);
+        } catch (RuntimeException e){
+            log.error(String.valueOf(e));
+            String answer = "Загрузка файла не удалась! Попробуйте позже снова";
+            sendMessage(chatId, answer);
+        }
     }
 
     @Override
@@ -87,7 +100,7 @@ public class MainServiceImpl implements MainService {
         return false;
     }
 
-    private String processServiceCommand(AppUser appUser, String command) {
+    private String processServiceCommand(AppUser appUser, BotCommands command) {
         if(REGISTRATION.equals(command)){
             //TODO Доделать регистрацию
             return "Временно не доступно!";
@@ -101,9 +114,11 @@ public class MainServiceImpl implements MainService {
     }
 
     private String help() {
-        return "Список доступных команд:\n"
-                + "/cancel - отмена выполнения текущей команды;\n"
-                + "/registration - регистрация";
+        return """
+                Список доступных команд:
+                /cancel - отмена выполнения текущей команды;
+                /registration - регистрация
+                """;
     }
 
     private String cancelProcess(AppUser appUser) {

@@ -3,7 +3,6 @@ package org.example.entity;
 import io.hypersistence.utils.hibernate.type.json.JsonBinaryType;
 import jakarta.persistence.*;
 import lombok.*;
-import org.apache.commons.lang3.builder.HashCodeExclude;
 import org.hibernate.annotations.Type;
 import org.telegram.telegrambots.meta.api.objects.Update;
 

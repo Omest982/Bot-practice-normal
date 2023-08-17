@@ -17,7 +17,12 @@ public enum BotCommands {
         return command;
     }
 
-    public boolean equals(String command){
-        return this.toString().equals(command);
+    public static BotCommands fromValue(String str){
+        for(BotCommands command : BotCommands.values()){
+            if(command.toString().equals(str)){
+                return command;
+            }
+        }
+        return null;
     }
 }

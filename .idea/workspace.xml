@@ -4,13 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4fbc9c06-1dac-465d-881e-337450767424" name="Changes" comment="Разобрался с кастомными классами в hibernate.&#10;Исправил создание БД raw_data.&#10;Исправил проверки в UpdateHandler.&#10;Добавил модуль для работы с таблицей юзеров common-jpa.&#10;Добавил сохранение юзера в БД при превом обращении к боту в модуле node.&#10;Вынес версию data-jpa в родительский pom.xml.">
-      <change afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/enums/BotCommands.java" afterDir="false" />
+    <list default="true" id="4fbc9c06-1dac-465d-881e-337450767424" name="Changes" comment="Добавил команды для бота и их обработку.&#10;Начал добавлять обработку фото и документов.">
+      <change afterPath="$PROJECT_DIR$/common-jpa/src/main/java/org/example/entity/AppDocument.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common-jpa/src/main/java/org/example/entity/BinaryContent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common-jpa/src/main/java/org/example/repository/AppDocumentRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common-jpa/src/main/java/org/example/repository/BinaryContentRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/FileService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/FileServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dispatcher/src/main/java/org/example/controller/UpdateHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/dispatcher/src/main/java/org/example/controller/UpdateHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/MainService.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/MainService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-rabbitmq/src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/node/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/entity/RawData.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/entity/RawData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/enums/BotCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/enums/BotCommands.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/MainServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/MainServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/UpdateConsumerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/UpdateConsumerImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,9 +26,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -80,7 +86,7 @@
       <recent name="G:\Коды\Bot-practice-normal\node\src\main\java\org\example" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.NodeApplication">
+  <component name="RunManager" selected="Application.DispatcherApplication">
     <configuration name="DispatcherApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.DispatcherApplication" />
       <module name="dispatcher" />
@@ -109,8 +115,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.NodeApplication" />
         <item itemvalue="Application.DispatcherApplication" />
+        <item itemvalue="Application.NodeApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -144,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1691501658584</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Добавил команды для бота и их обработку.&#10;Начал добавлять обработку фото и документов.">
+      <created>1692024829076</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1692024829076</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -165,6 +178,7 @@
     <MESSAGE value="Создал вебхук телеграмм бота на основе микросервисной архитектуры.&#10;Модуль dispatcher общается с модулем node через rabbitmq. dispatcher принимает сообщения от телеграмма и передает их в определенные очереди rabbitmq. node отслеживает эти очереди, получает оттуда сообщения и обрабатывает их передавая ответ в очередь rabbitmq, которую отслеживает dispatcher. После dispatcher отправляет ответ уже в теллеграмм пользователю." />
     <MESSAGE value="test commit" />
     <MESSAGE value="Разобрался с кастомными классами в hibernate.&#10;Исправил создание БД raw_data.&#10;Исправил проверки в UpdateHandler.&#10;Добавил модуль для работы с таблицей юзеров common-jpa.&#10;Добавил сохранение юзера в БД при превом обращении к боту в модуле node.&#10;Вынес версию data-jpa в родительский pom.xml." />
-    <option name="LAST_COMMIT_MESSAGE" value="Разобрался с кастомными классами в hibernate.&#10;Исправил создание БД raw_data.&#10;Исправил проверки в UpdateHandler.&#10;Добавил модуль для работы с таблицей юзеров common-jpa.&#10;Добавил сохранение юзера в БД при превом обращении к боту в модуле node.&#10;Вынес версию data-jpa в родительский pom.xml." />
+    <MESSAGE value="Добавил команды для бота и их обработку.&#10;Начал добавлять обработку фото и документов." />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил команды для бота и их обработку.&#10;Начал добавлять обработку фото и документов." />
   </component>
 </project>
