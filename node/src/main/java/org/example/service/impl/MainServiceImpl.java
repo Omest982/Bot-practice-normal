@@ -81,7 +81,7 @@ public class MainServiceImpl implements MainService {
         if(isNotAllowedToSendContent(chatId, appUser)){
             return;
         }
-        //TODO Добавить сохранение документа!
+        //TODO Добавить сохранение фото!
         String answer = "Фото успешно загружено!";
         sendMessage(chatId, answer);
     }

@@ -4,18 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4fbc9c06-1dac-465d-881e-337450767424" name="Changes" comment="Добавил команды для бота и их обработку.&#10;Начал добавлять обработку фото и документов.">
-      <change afterPath="$PROJECT_DIR$/common-jpa/src/main/java/org/example/entity/AppDocument.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-jpa/src/main/java/org/example/entity/BinaryContent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-jpa/src/main/java/org/example/repository/AppDocumentRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-jpa/src/main/java/org/example/repository/BinaryContentRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/FileService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/FileServiceImpl.java" afterDir="false" />
+    <list default="true" id="4fbc9c06-1dac-465d-881e-337450767424" name="Changes" comment="Создал сервис для работы с документами и фото.&#10;Добавил обработку и сохранение в БД документов. &#10;Немного исправил сравнение комманд для бота.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common-rabbitmq/src/main/java/org/example/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/node/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/entity/RawData.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/entity/RawData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/enums/BotCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/enums/BotCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/FileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/FileServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/MainServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/MainServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +77,7 @@
       <recent name="G:\Коды\Bot-practice-normal\node\src\main\java\org\example" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DispatcherApplication">
+  <component name="RunManager" selected="Application.NodeApplication">
     <configuration name="DispatcherApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.DispatcherApplication" />
       <module name="dispatcher" />
@@ -115,8 +106,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DispatcherApplication" />
         <item itemvalue="Application.NodeApplication" />
+        <item itemvalue="Application.DispatcherApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -157,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692024829076</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Создал сервис для работы с документами и фото.&#10;Добавил обработку и сохранение в БД документов. &#10;Немного исправил сравнение комманд для бота.">
+      <created>1692261351538</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1692261351538</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -179,6 +177,24 @@
     <MESSAGE value="test commit" />
     <MESSAGE value="Разобрался с кастомными классами в hibernate.&#10;Исправил создание БД raw_data.&#10;Исправил проверки в UpdateHandler.&#10;Добавил модуль для работы с таблицей юзеров common-jpa.&#10;Добавил сохранение юзера в БД при превом обращении к боту в модуле node.&#10;Вынес версию data-jpa в родительский pom.xml." />
     <MESSAGE value="Добавил команды для бота и их обработку.&#10;Начал добавлять обработку фото и документов." />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил команды для бота и их обработку.&#10;Начал добавлять обработку фото и документов." />
+    <MESSAGE value="Создал сервис для работы с документами и фото.&#10;Добавил обработку и сохранение в БД документов. &#10;Немного исправил сравнение комманд для бота." />
+    <option name="LAST_COMMIT_MESSAGE" value="Создал сервис для работы с документами и фото.&#10;Добавил обработку и сохранение в БД документов. &#10;Немного исправил сравнение комманд для бота." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/node/src/main/java/org/example/service/impl/FileServiceImpl.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="response.headers" />
+        <watch expression="response.headers" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

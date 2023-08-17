@@ -37,7 +37,7 @@ public class FileServiceImpl implements FileService {
         String fileId = telegramMessage.getDocument().getFileId();
         ResponseEntity<String> response = getFilePath(fileId);
         if(response.getStatusCode() == HttpStatus.OK){
-            JSONObject jsonObject = new JSONObject(response);
+            JSONObject jsonObject = new JSONObject(response.getBody());
             String filePath = String.valueOf(jsonObject
                     .getJSONObject("result")
                     .getString("file_path"));
