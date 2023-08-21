@@ -3,8 +3,10 @@ package org.example.service.impl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.entity.AppDocument;
+import org.example.entity.AppPhoto;
 import org.example.entity.BinaryContent;
 import org.example.repository.AppDocumentRepository;
+import org.example.repository.AppPhotoRepository;
 import org.example.repository.BinaryContentRepository;
 import org.example.service.FileService;
 import org.json.JSONObject;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.telegram.telegrambots.meta.api.objects.Document;
 import org.telegram.telegrambots.meta.api.objects.Message;
+import org.telegram.telegrambots.meta.api.objects.PhotoSize;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,28 +35,62 @@ public class FileServiceImpl implements FileService {
     private String fileStorageUri;
     private final AppDocumentRepository appDocumentRepository;
     private final BinaryContentRepository binaryContentRepository;
+    private final AppPhotoRepository appPhotoRepository;
     @Override
     public AppDocument processDoc(Message telegramMessage) throws RuntimeException {
-        String fileId = telegramMessage.getDocument().getFileId();
+        Document telegramDocument = telegramMessage.getDocument();
+        String fileId = telegramDocument.getFileId();
         ResponseEntity<String> response = getFilePath(fileId);
         if(response.getStatusCode() == HttpStatus.OK){
-            JSONObject jsonObject = new JSONObject(response.getBody());
-            String filePath = String.valueOf(jsonObject
-                    .getJSONObject("result")
-                    .getString("file_path"));
-            byte[] fileInByte = downloadFile(filePath);
-            BinaryContent transientBinaryContent = BinaryContent
-                    .builder()
-                    .fileAsArrayOfBites(fileInByte)
-                    .build();
-            BinaryContent persistentBinaryContent = binaryContentRepository.save(transientBinaryContent);
-            Document telegramDocument = telegramMessage.getDocument();
+            BinaryContent persistentBinaryContent = getPersistentBinaryContent(response);
             AppDocument appDocument = buildAppDocument(persistentBinaryContent, telegramDocument);
             return appDocumentRepository.save(appDocument);
         }else {
             throw new RuntimeException("Bad response from telegram service" + response);
         }
     }
+
+    public BinaryContent getPersistentBinaryContent(ResponseEntity<String> response){
+        String filePath = getFilePath(response);
+        byte[] fileInByte = downloadFile(filePath);
+        BinaryContent transientBinaryContent = BinaryContent
+                .builder()
+                .fileAsArrayOfBites(fileInByte)
+                .build();
+        return binaryContentRepository.save(transientBinaryContent);
+    }
+
+    public String getFilePath(ResponseEntity<String> response){
+        JSONObject jsonObject = new JSONObject(response.getBody());
+        return String.valueOf(jsonObject
+                .getJSONObject("result")
+                .getString("file_path"));
+    }
+
+    @Override
+    public AppPhoto processPhoto(Message telegramMessage) throws RuntimeException{
+        //TODO Доделать обработку большого количества
+        PhotoSize telegramPhoto = telegramMessage.getPhoto().get(0);
+        String fileId = telegramPhoto.getFileId();
+        ResponseEntity<String> response = getFilePath(fileId);
+        if(response.getStatusCode() == HttpStatus.OK){
+            BinaryContent persistentBinaryContent = getPersistentBinaryContent(response);
+            AppPhoto appPhoto = buildAppPhoto(persistentBinaryContent, telegramPhoto);
+            return appPhotoRepository.save(appPhoto);
+        }else {
+            throw new RuntimeException("Bad response from telegram service" + response);
+        }
+    }
+
+    private AppPhoto buildAppPhoto(BinaryContent persistentBinaryContent, PhotoSize telegramPhoto) {
+        return AppPhoto
+                .builder()
+                .telegramFileId(telegramPhoto.getFileId())
+                .binaryContent(persistentBinaryContent)
+                .fileSize(telegramPhoto.getFileSize())
+                .build();
+    }
+
 
     private AppDocument buildAppDocument(BinaryContent persistentBinaryContent, Document telegramDocument) {
         return AppDocument

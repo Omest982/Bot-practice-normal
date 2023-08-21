@@ -3,6 +3,7 @@ package org.example.service.impl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.entity.AppDocument;
+import org.example.entity.AppPhoto;
 import org.example.entity.AppUser;
 import org.example.entity.RawData;
 import org.example.entity.enums.UserStatus;
@@ -81,9 +82,16 @@ public class MainServiceImpl implements MainService {
         if(isNotAllowedToSendContent(chatId, appUser)){
             return;
         }
-        //TODO Добавить сохранение фото!
-        String answer = "Фото успешно загружено!";
-        sendMessage(chatId, answer);
+
+        try{
+            AppPhoto appPhoto = fileService.processPhoto(update.getMessage());
+            String answer = "Фото успешно загружено!";
+            sendMessage(chatId, answer);
+        } catch (RuntimeException e){
+            log.error(String.valueOf(e));
+            String answer = "Загрузка фото не удалась! Попробуйте позже снова";
+            sendMessage(chatId, answer);
+        }
     }
 
     private boolean isNotAllowedToSendContent(Long chatId, AppUser appUser) {
