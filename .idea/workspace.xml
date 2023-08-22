@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4fbc9c06-1dac-465d-881e-337450767424" name="Changes" comment="Небольшое исправление с созданием JSON.">
-      <change afterPath="$PROJECT_DIR$/common-jpa/src/main/java/org/example/entity/AppPhoto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-jpa/src/main/java/org/example/repository/AppPhotoRepository.java" afterDir="false" />
+    <list default="true" id="4fbc9c06-1dac-465d-881e-337450767424" name="Changes" comment="Добавил новую таблицу в которой хранится информация о фото.&#10;Исправил название таблицы BinaryContent.&#10;Добавил сохранение фото в БД.">
+      <change afterPath="$PROJECT_DIR$/rest-service/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/RestServiceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/controller/FileController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/service/FileService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/service/impl/FileServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common-jpa/src/main/java/org/example/entity/BinaryContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-jpa/src/main/java/org/example/entity/BinaryContent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/FileService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/FileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/FileServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/MainServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/MainServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/node/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +24,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -68,7 +70,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-19&quot;,
-    &quot;last_opened_file_path&quot;: &quot;G:/Коды/Bot-practice-normal/node/src/main/resources&quot;,
+    &quot;last_opened_file_path&quot;: &quot;G:/Коды/Bot-practice-normal/rest-service/src/main/resources&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
@@ -77,11 +79,12 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\Коды\Bot-practice-normal\rest-service\src\main\resources" />
       <recent name="G:\Коды\Bot-practice-normal\node\src\main\resources" />
       <recent name="G:\Коды\Bot-practice-normal\node\src\main\java\org\example" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.NodeApplication">
+  <component name="RunManager" selected="Application.RestServiceApplication">
     <configuration name="DispatcherApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.DispatcherApplication" />
       <module name="dispatcher" />
@@ -108,8 +111,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RestServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.RestServiceApplication" />
+      <module name="rest-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.RestServiceApplication" />
         <item itemvalue="Application.NodeApplication" />
         <item itemvalue="Application.DispatcherApplication" />
       </list>
@@ -166,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692262772545</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Добавил новую таблицу в которой хранится информация о фото.&#10;Исправил название таблицы BinaryContent.&#10;Добавил сохранение фото в БД.">
+      <created>1692617602015</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1692617602015</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -190,7 +214,8 @@
     <MESSAGE value="Добавил команды для бота и их обработку.&#10;Начал добавлять обработку фото и документов." />
     <MESSAGE value="Создал сервис для работы с документами и фото.&#10;Добавил обработку и сохранение в БД документов. &#10;Немного исправил сравнение комманд для бота." />
     <MESSAGE value="Небольшое исправление с созданием JSON." />
-    <option name="LAST_COMMIT_MESSAGE" value="Небольшое исправление с созданием JSON." />
+    <MESSAGE value="Добавил новую таблицу в которой хранится информация о фото.&#10;Исправил название таблицы BinaryContent.&#10;Добавил сохранение фото в БД." />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил новую таблицу в которой хранится информация о фото.&#10;Исправил название таблицы BinaryContent.&#10;Добавил сохранение фото в БД." />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
