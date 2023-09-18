@@ -4,16 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4fbc9c06-1dac-465d-881e-337450767424" name="Changes" comment="Добавил новую таблицу в которой хранится информация о фото.&#10;Исправил название таблицы BinaryContent.&#10;Добавил сохранение фото в БД.">
-      <change afterPath="$PROJECT_DIR$/rest-service/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/RestServiceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/controller/FileController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/service/FileService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/service/impl/FileServiceImpl.java" afterDir="false" />
+    <list default="true" id="4fbc9c06-1dac-465d-881e-337450767424" name="Changes" comment="Добавил микросервис rest-service ответственный за отдачу пользователю файлов и фото.&#10;В нем создал сервис который это все реализует и контроллер который обрабатывает запросы.">
+      <change afterPath="$PROJECT_DIR$/common-utils/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common-utils/src/main/java/org/example/CryptoTool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node/src/main/java/org/example/configuration/NodeConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/enums/LinkType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/configuration/RestServiceConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/node/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/FileService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/FileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/FileServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/MainServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/MainServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rest-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rest-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rest-service/src/main/java/org/example/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/controller/FileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rest-service/src/main/java/org/example/service/impl/FileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/service/impl/FileServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +29,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -83,8 +89,11 @@
       <recent name="G:\Коды\Bot-practice-normal\node\src\main\resources" />
       <recent name="G:\Коды\Bot-practice-normal\node\src\main\java\org\example" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.example.configuration" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.RestServiceApplication">
+  <component name="RunManager" selected="Application.NodeApplication">
     <configuration name="DispatcherApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.DispatcherApplication" />
       <module name="dispatcher" />
@@ -126,8 +135,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.RestServiceApplication" />
         <item itemvalue="Application.NodeApplication" />
+        <item itemvalue="Application.RestServiceApplication" />
         <item itemvalue="Application.DispatcherApplication" />
       </list>
     </recent_temporary>
@@ -190,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692617602015</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Добавил микросервис rest-service ответственный за отдачу пользователю файлов и фото.&#10;В нем создал сервис который это все реализует и контроллер который обрабатывает запросы.">
+      <created>1692695898691</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1692695898691</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -215,7 +231,8 @@
     <MESSAGE value="Создал сервис для работы с документами и фото.&#10;Добавил обработку и сохранение в БД документов. &#10;Немного исправил сравнение комманд для бота." />
     <MESSAGE value="Небольшое исправление с созданием JSON." />
     <MESSAGE value="Добавил новую таблицу в которой хранится информация о фото.&#10;Исправил название таблицы BinaryContent.&#10;Добавил сохранение фото в БД." />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил новую таблицу в которой хранится информация о фото.&#10;Исправил название таблицы BinaryContent.&#10;Добавил сохранение фото в БД." />
+    <MESSAGE value="Добавил микросервис rest-service ответственный за отдачу пользователю файлов и фото.&#10;В нем создал сервис который это все реализует и контроллер который обрабатывает запросы." />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил микросервис rest-service ответственный за отдачу пользователю файлов и фото.&#10;В нем создал сервис который это все реализует и контроллер который обрабатывает запросы." />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

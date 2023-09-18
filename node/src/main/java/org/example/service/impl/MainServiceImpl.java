@@ -13,6 +13,7 @@ import org.example.service.AnswerProducer;
 import org.example.service.FileService;
 import org.example.service.MainService;
 import org.example.service.enums.BotCommands;
+import org.example.service.enums.LinkType;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -65,7 +66,9 @@ public class MainServiceImpl implements MainService {
 
         try{
             AppDocument appDocument = fileService.processDoc(update.getMessage());
-            String answer = "Документ успешно загружен!";
+            String link = fileService.generateLink(appDocument.getId(), LinkType.GET_DOC);
+            String answer = "Документ успешно загружен!\n" +
+                    "Ссылка для скачивания : " + link;
             sendMessage(chatId, answer);
         } catch (RuntimeException e){
             log.error(String.valueOf(e));
@@ -85,7 +88,9 @@ public class MainServiceImpl implements MainService {
 
         try{
             AppPhoto appPhoto = fileService.processPhoto(update.getMessage());
-            String answer = "Фото успешно загружено!";
+            String link = fileService.generateLink(appPhoto.getId(), LinkType.GET_PHOTO);
+            String answer = "Фото успешно загружено!\n" +
+                    "Ссылка для скачивания : " + link;
             sendMessage(chatId, answer);
         } catch (RuntimeException e){
             log.error(String.valueOf(e));

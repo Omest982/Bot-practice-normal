@@ -3,6 +3,7 @@ package org.example.service.impl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
+import org.example.CryptoTool;
 import org.example.entity.AppDocument;
 import org.example.entity.AppPhoto;
 import org.example.entity.BinaryContent;
@@ -21,17 +22,22 @@ import java.io.IOException;
 public class FileServiceImpl implements FileService {
     private final AppDocumentRepository appDocumentRepository;
     private final AppPhotoRepository appPhotoRepository;
+    private final CryptoTool cryptoTool;
     @Override
-    public AppDocument getAppDocument(String docId) {
-        //TODO Добавить дешифрование хэш-строки
-        Long id = Long.parseLong(docId);
+    public AppDocument getAppDocument(String hash) {
+        Long id = cryptoTool.idOf(hash);
+        if(id == null){
+            return null;
+        }
         return appDocumentRepository.findById(id).orElse(null);
     }
 
     @Override
-    public AppPhoto getAppPhoto(String docId) {
-        //TODO Добавить дешифрование хэш-строки
-        Long id = Long.parseLong(docId);
+    public AppPhoto getAppPhoto(String hash) {
+        Long id = cryptoTool.idOf(hash);
+        if(id == null){
+            return null;
+        }
         return appPhotoRepository.findById(id).orElse(null);
     }
 

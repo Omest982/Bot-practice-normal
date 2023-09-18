@@ -2,6 +2,7 @@ package org.example.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.example.CryptoTool;
 import org.example.entity.AppDocument;
 import org.example.entity.AppPhoto;
 import org.example.entity.BinaryContent;
@@ -9,6 +10,7 @@ import org.example.repository.AppDocumentRepository;
 import org.example.repository.AppPhotoRepository;
 import org.example.repository.BinaryContentRepository;
 import org.example.service.FileService;
+import org.example.service.enums.LinkType;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
@@ -33,9 +35,12 @@ public class FileServiceImpl implements FileService {
     private String fileInfoUri;
     @Value("${service.file_storage.uri}")
     private String fileStorageUri;
+    @Value("${link.address}")
+    private String linkAddress;
     private final AppDocumentRepository appDocumentRepository;
     private final BinaryContentRepository binaryContentRepository;
     private final AppPhotoRepository appPhotoRepository;
+    private final CryptoTool cryptoTool;
     @Override
     public AppDocument processDoc(Message telegramMessage) throws RuntimeException {
         Document telegramDocument = telegramMessage.getDocument();
@@ -68,9 +73,16 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
+    public String generateLink(Long id, LinkType linkType) {
+        String hash = cryptoTool.hashOf(id);
+        return "http://" + linkAddress + "/" + linkType + "?id=" + hash;
+    }
+
+    @Override
     public AppPhoto processPhoto(Message telegramMessage) throws RuntimeException{
-        //TODO Доделать обработку большого количества
-        PhotoSize telegramPhoto = telegramMessage.getPhoto().get(0);
+        int photoSizeCount = telegramMessage.getPhoto().size();
+        int photoIndex = photoSizeCount > 1 ? telegramMessage.getPhoto().size() - 1 : 0;
+        PhotoSize telegramPhoto = telegramMessage.getPhoto().get(photoIndex);
         String fileId = telegramPhoto.getFileId();
         ResponseEntity<String> response = getFilePath(fileId);
         if(response.getStatusCode() == HttpStatus.OK){

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class FileController {
     private final FileService fileService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "get-doc")
+    @RequestMapping(method = RequestMethod.GET, value = "/get-doc")
     public ResponseEntity<?> getDoc(@RequestParam("id") String id){
         //TODO для формирования badRequest добавить ControllerAdvice
         AppDocument appDocument = fileService.getAppDocument(id);
@@ -39,7 +39,7 @@ public class FileController {
                 .body(fileSystemResource);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "get-photo")
+    @RequestMapping(method = RequestMethod.GET, value = "/get-photo")
     public ResponseEntity<?> getPhoto(@RequestParam("id") String id){
         //TODO для формирования badRequest добавить ControllerAdvice
         AppPhoto appPhoto = fileService.getAppPhoto(id);
