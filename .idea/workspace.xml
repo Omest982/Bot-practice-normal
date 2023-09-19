@@ -4,22 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4fbc9c06-1dac-465d-881e-337450767424" name="Changes" comment="Добавил микросервис rest-service ответственный за отдачу пользователю файлов и фото.&#10;В нем создал сервис который это все реализует и контроллер который обрабатывает запросы.">
-      <change afterPath="$PROJECT_DIR$/common-utils/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common-utils/src/main/java/org/example/CryptoTool.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node/src/main/java/org/example/configuration/NodeConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/enums/LinkType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/configuration/RestServiceConfiguration.java" afterDir="false" />
+    <list default="true" id="4fbc9c06-1dac-465d-881e-337450767424" name="Changes" comment="Добавил микросервис common-utils, в нем создал утилиту которая шифрует id фото и документов.&#10;Теперь node после сохранения файла генерирует ссылку для его скачивания.&#10;Внедрил утилиту для шифрования в микросервисы node и rest-service, с её помощью при генерации ссылки для скачивания не светится реальное id файла.&#10;Эта ссылка это запрос к контроллеру из rest-service.">
+      <change afterPath="$PROJECT_DIR$/mail-service/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mail-service/src/main/java/org/example/MailApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mail-service/src/main/java/org/example/controller/MailController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mail-service/src/main/java/org/example/dto/MailParams.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mail-service/src/main/java/org/example/service/MailSenderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mail-service/src/main/java/org/example/service/impl/MailSenderServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/node/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/FileService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/FileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/FileServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/MainServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/MainServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rest-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest-service/src/main/java/org/example/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/controller/FileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest-service/src/main/java/org/example/service/impl/FileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/service/impl/FileServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -70,19 +64,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-19&quot;,
-    &quot;last_opened_file_path&quot;: &quot;G:/Коды/Bot-practice-normal/rest-service/src/main/resources&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "jdk.selected.JAVA_MODULE": "openjdk-19",
+    "last_opened_file_path": "G:/Коды/Bot-practice-normal/rest-service/src/main/resources",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "PLAIN_TEXT"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="G:\Коды\Bot-practice-normal\rest-service\src\main\resources" />
@@ -90,16 +89,30 @@
       <recent name="G:\Коды\Bot-practice-normal\node\src\main\java\org\example" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.example" />
       <recent name="org.example.configuration" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.NodeApplication">
+  <component name="RunManager" selected="Application.MailApplication">
     <configuration name="DispatcherApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.DispatcherApplication" />
       <module name="dispatcher" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.example.controller.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MailApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.MailApplication" />
+      <module name="mail-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -135,6 +148,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MailApplication" />
         <item itemvalue="Application.NodeApplication" />
         <item itemvalue="Application.RestServiceApplication" />
         <item itemvalue="Application.DispatcherApplication" />
@@ -206,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692695898691</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Добавил микросервис common-utils, в нем создал утилиту которая шифрует id фото и документов.&#10;Теперь node после сохранения файла генерирует ссылку для его скачивания.&#10;Внедрил утилиту для шифрования в микросервисы node и rest-service, с её помощью при генерации ссылки для скачивания не светится реальное id файла.&#10;Эта ссылка это запрос к контроллеру из rest-service.">
+      <created>1695038260691</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1695038260691</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -232,7 +253,8 @@
     <MESSAGE value="Небольшое исправление с созданием JSON." />
     <MESSAGE value="Добавил новую таблицу в которой хранится информация о фото.&#10;Исправил название таблицы BinaryContent.&#10;Добавил сохранение фото в БД." />
     <MESSAGE value="Добавил микросервис rest-service ответственный за отдачу пользователю файлов и фото.&#10;В нем создал сервис который это все реализует и контроллер который обрабатывает запросы." />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил микросервис rest-service ответственный за отдачу пользователю файлов и фото.&#10;В нем создал сервис который это все реализует и контроллер который обрабатывает запросы." />
+    <MESSAGE value="Добавил микросервис common-utils, в нем создал утилиту которая шифрует id фото и документов.&#10;Теперь node после сохранения файла генерирует ссылку для его скачивания.&#10;Внедрил утилиту для шифрования в микросервисы node и rest-service, с её помощью при генерации ссылки для скачивания не светится реальное id файла.&#10;Эта ссылка это запрос к контроллеру из rest-service." />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил микросервис common-utils, в нем создал утилиту которая шифрует id фото и документов.&#10;Теперь node после сохранения файла генерирует ссылку для его скачивания.&#10;Внедрил утилиту для шифрования в микросервисы node и rest-service, с её помощью при генерации ссылки для скачивания не светится реальное id файла.&#10;Эта ссылка это запрос к контроллеру из rest-service." />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
