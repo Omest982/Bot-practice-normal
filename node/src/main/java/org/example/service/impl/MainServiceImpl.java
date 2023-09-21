@@ -10,6 +10,7 @@ import org.example.entity.enums.UserStatus;
 import org.example.repository.AppUserRepository;
 import org.example.repository.RawDataRepository;
 import org.example.service.AnswerProducer;
+import org.example.service.AppUserService;
 import org.example.service.FileService;
 import org.example.service.MainService;
 import org.example.service.enums.BotCommands;
@@ -18,6 +19,8 @@ import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.User;
+
+import java.util.Optional;
 
 import static org.example.entity.enums.UserStatus.BASIC_STATUS;
 import static org.example.entity.enums.UserStatus.WAIT_FOR_EMAIL_STATUS;
@@ -30,6 +33,7 @@ public class MainServiceImpl implements MainService {
     private final RawDataRepository rawDataRepository;
     private final AppUserRepository appUserRepository;
     private final AnswerProducer answerProducer;
+    private final AppUserService appUserService;
     private final FileService fileService;
 
     @Override
@@ -46,7 +50,7 @@ public class MainServiceImpl implements MainService {
         } else if (BASIC_STATUS.equals(appUser.getStatus())) {
             result = processServiceCommand(appUser, command);
         }else if(WAIT_FOR_EMAIL_STATUS.equals(appUser.getStatus())){
-            //TODO Добавить обработку емейла
+            result = appUserService.setEmail(appUser, text);
         } else {
             log.error("Unknown user state " + appUser.getStatus());
             result = "Неизвестная ошибка! Введите /cancel и попоробуйте снова";
@@ -115,7 +119,7 @@ public class MainServiceImpl implements MainService {
 
     private String processServiceCommand(AppUser appUser, BotCommands command) {
         if(REGISTRATION.equals(command)){
-            //TODO Доделать регистрацию
+            appUserService.registerUser(appUser);
             return "Временно не доступно!";
         } else if(HELP.equals(command)){
             return help();
@@ -156,20 +160,19 @@ public class MainServiceImpl implements MainService {
 
     public AppUser findOrSaveAppUser(Update update){
         User telegramUser = update.getMessage().getFrom();
-        AppUser persistentUser = appUserRepository.findAppUserByTelegramUserId(telegramUser.getId());
-        if (persistentUser == null){
+        Optional<AppUser> optionalPersistentUser = appUserRepository.findByTelegramUserId(telegramUser.getId());
+        if (optionalPersistentUser.isEmpty()){
             AppUser transientAppUser = AppUser.builder()
                     .telegramUserId(telegramUser.getId())
                     .firstName(telegramUser.getFirstName())
                     .lastName(telegramUser.getLastName())
                     .username(telegramUser.getUserName())
-                    //TODO изменить значения по умолчанию после добовления регистрации
-                    .isActive(true)
+                    .isActive(false)
                     .status(BASIC_STATUS)
                     .build();
             appUserRepository.save(transientAppUser);
             return transientAppUser;
         }
-        return persistentUser;
+        return optionalPersistentUser.get();
     }
 }

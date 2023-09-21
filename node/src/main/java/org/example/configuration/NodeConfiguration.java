@@ -1,6 +1,6 @@
 package org.example.configuration;
 
-import org.example.CryptoTool;
+import org.example.utils.CryptoTool;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

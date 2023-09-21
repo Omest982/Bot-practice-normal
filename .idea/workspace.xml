@@ -4,16 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4fbc9c06-1dac-465d-881e-337450767424" name="Changes" comment="Добавил микросервис common-utils, в нем создал утилиту которая шифрует id фото и документов.&#10;Теперь node после сохранения файла генерирует ссылку для его скачивания.&#10;Внедрил утилиту для шифрования в микросервисы node и rest-service, с её помощью при генерации ссылки для скачивания не светится реальное id файла.&#10;Эта ссылка это запрос к контроллеру из rest-service.">
-      <change afterPath="$PROJECT_DIR$/mail-service/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mail-service/src/main/java/org/example/MailApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mail-service/src/main/java/org/example/controller/MailController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mail-service/src/main/java/org/example/dto/MailParams.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mail-service/src/main/java/org/example/service/MailSenderService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mail-service/src/main/java/org/example/service/impl/MailSenderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="4fbc9c06-1dac-465d-881e-337450767424" name="Changes" comment="Добавил микросервис mail-service который отвечает за обработку и отправку сообщений на почту.&#10;В нем создал с помощью JavaMailSender логику по отправке ссылок для подтверждения регистрации на почту с smtp порта.">
+      <change afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/AppUserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/AppUserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/controller/UserActivationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/service/UserActivationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/service/impl/UserActivationServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-jpa/src/main/java/org/example/repository/AppUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-jpa/src/main/java/org/example/repository/AppUserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-utils/src/main/java/org/example/CryptoTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-utils/src/main/java/org/example/utils/CryptoTool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mail-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mail-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mail-service/src/main/java/org/example/dto/MailParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-utils/src/main/java/org/example/dto/MailParams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/node/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/configuration/NodeConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/configuration/NodeConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/FileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/FileServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/MainServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/MainServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rest-service/src/main/java/org/example/configuration/RestServiceConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/configuration/RestServiceConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rest-service/src/main/java/org/example/service/impl/FileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/service/impl/FileServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +119,7 @@
       <module name="mail-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="org.example.utils.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -125,7 +132,7 @@
       <module name="node" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="org.example.utils.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -138,7 +145,7 @@
       <module name="rest-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="org.example.utils.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -227,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695038260691</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Добавил микросервис mail-service который отвечает за обработку и отправку сообщений на почту.&#10;В нем создал с помощью JavaMailSender логику по отправке ссылок для подтверждения регистрации на почту с smtp порта.">
+      <created>1695126070362</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1695126070362</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -254,7 +268,8 @@
     <MESSAGE value="Добавил новую таблицу в которой хранится информация о фото.&#10;Исправил название таблицы BinaryContent.&#10;Добавил сохранение фото в БД." />
     <MESSAGE value="Добавил микросервис rest-service ответственный за отдачу пользователю файлов и фото.&#10;В нем создал сервис который это все реализует и контроллер который обрабатывает запросы." />
     <MESSAGE value="Добавил микросервис common-utils, в нем создал утилиту которая шифрует id фото и документов.&#10;Теперь node после сохранения файла генерирует ссылку для его скачивания.&#10;Внедрил утилиту для шифрования в микросервисы node и rest-service, с её помощью при генерации ссылки для скачивания не светится реальное id файла.&#10;Эта ссылка это запрос к контроллеру из rest-service." />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил микросервис common-utils, в нем создал утилиту которая шифрует id фото и документов.&#10;Теперь node после сохранения файла генерирует ссылку для его скачивания.&#10;Внедрил утилиту для шифрования в микросервисы node и rest-service, с её помощью при генерации ссылки для скачивания не светится реальное id файла.&#10;Эта ссылка это запрос к контроллеру из rest-service." />
+    <MESSAGE value="Добавил микросервис mail-service который отвечает за обработку и отправку сообщений на почту.&#10;В нем создал с помощью JavaMailSender логику по отправке ссылок для подтверждения регистрации на почту с smtp порта." />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил микросервис mail-service который отвечает за обработку и отправку сообщений на почту.&#10;В нем создал с помощью JavaMailSender логику по отправке ссылок для подтверждения регистрации на почту с smtp порта." />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
