@@ -22,8 +22,7 @@ import org.telegram.telegrambots.meta.api.objects.User;
 
 import java.util.Optional;
 
-import static org.example.entity.enums.UserStatus.BASIC_STATUS;
-import static org.example.entity.enums.UserStatus.WAIT_FOR_EMAIL_STATUS;
+import static org.example.entity.enums.UserStatus.*;
 import static org.example.service.enums.BotCommands.*;
 
 @RequiredArgsConstructor
@@ -119,13 +118,14 @@ public class MainServiceImpl implements MainService {
 
     private String processServiceCommand(AppUser appUser, BotCommands command) {
         if(REGISTRATION.equals(command)){
-            appUserService.registerUser(appUser);
-            return "Временно не доступно!";
+            return appUserService.registerUser(appUser);
         } else if(HELP.equals(command)){
             return help();
         } else if (START.equals(command)) {
             return "Приветствую! чтобы посмотреть список команд введить /help";
-        } else {
+        } else if (CHANGE_MAIL.equals(command)){
+            return appUserService.changeEmail(appUser);
+        }else {
             return "Неизвестная команда! введите /help для просмотра доступных команд";
         }
     }
@@ -135,6 +135,7 @@ public class MainServiceImpl implements MainService {
                 Список доступных команд:
                 /cancel - отмена выполнения текущей команды;
                 /registration - регистрация
+                /change_mail - смена email
                 """;
     }
 

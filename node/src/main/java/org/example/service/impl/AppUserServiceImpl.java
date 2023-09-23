@@ -30,6 +30,16 @@ public class AppUserServiceImpl implements AppUserService {
     private String mailServiceUri;
 
     @Override
+    public String changeEmail(AppUser appUser) {
+        if(appUser.getEmail() != null){
+            appUser.setStatus(WAIT_FOR_EMAIL_STATUS);
+            appUserRepository.save(appUser);
+            return "Введите пожалуйста ваш новый email";
+        }
+        return "Вы еще не вводили никакого email!";
+    }
+
+    @Override
     public String registerUser(AppUser appUser) {
         if (appUser.getIsActive()){
             return "Вы уже зарегестрированы!";

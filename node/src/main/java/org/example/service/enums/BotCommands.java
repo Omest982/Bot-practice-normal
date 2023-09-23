@@ -7,7 +7,9 @@ public enum BotCommands {
     HELP("/help"),
     CANCEL("/cancel"),
     REGISTRATION("/registration"),
+    CHANGE_MAIL("/change_mail"),
     START("/start");
+
 
 
     private String command;
