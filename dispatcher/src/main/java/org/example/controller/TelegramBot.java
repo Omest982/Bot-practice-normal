@@ -51,10 +51,6 @@ public class TelegramBot extends TelegramWebhookBot {
         }
     }
 
-    public void handelUpdate(Update update){
-        log.info(update.getMessage().getText());
-    }
-
     @Override
     public BotApiMethod<?> onWebhookUpdateReceived(Update update) {
         return null;

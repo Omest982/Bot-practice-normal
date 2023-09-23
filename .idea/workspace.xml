@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4fbc9c06-1dac-465d-881e-337450767424" name="Changes" comment="Добавил регистрацию пользователей.&#10;В микросервис node добавил AppUserService в котором обрабатывается запрос на регистрацию(registerUser), происходит установка и проверка на корректность email и отправка запроса на микросервис mail-service(setEmail) чтобы тот отправил на почту сообщение с ссылкой на контроллер который находится в микросервисе rest-service он обрабатывает активацию пользователя.">
+    <list default="true" id="4fbc9c06-1dac-465d-881e-337450767424" name="Changes" comment="Добавил команду на изменение email пользователя.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common-jpa/src/main/java/org/example/entity/enums/UserStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-jpa/src/main/java/org/example/entity/enums/UserStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/AppUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/AppUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/enums/BotCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/enums/BotCommands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/AppUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/AppUserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/MainServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/MainServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dispatcher/src/main/java/org/example/controller/TelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/dispatcher/src/main/java/org/example/controller/TelegramBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rest-service/src/main/java/org/example/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/controller/FileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rest-service/src/main/java/org/example/service/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/service/FileService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rest-service/src/main/java/org/example/service/impl/FileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/service/impl/FileServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -238,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695293550362</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Добавил команду на изменение email пользователя.">
+      <created>1695459869972</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1695459869972</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -267,7 +273,8 @@
     <MESSAGE value="Добавил микросервис common-utils, в нем создал утилиту которая шифрует id фото и документов.&#10;Теперь node после сохранения файла генерирует ссылку для его скачивания.&#10;Внедрил утилиту для шифрования в микросервисы node и rest-service, с её помощью при генерации ссылки для скачивания не светится реальное id файла.&#10;Эта ссылка это запрос к контроллеру из rest-service." />
     <MESSAGE value="Добавил микросервис mail-service который отвечает за обработку и отправку сообщений на почту.&#10;В нем создал с помощью JavaMailSender логику по отправке ссылок для подтверждения регистрации на почту с smtp порта." />
     <MESSAGE value="Добавил регистрацию пользователей.&#10;В микросервис node добавил AppUserService в котором обрабатывается запрос на регистрацию(registerUser), происходит установка и проверка на корректность email и отправка запроса на микросервис mail-service(setEmail) чтобы тот отправил на почту сообщение с ссылкой на контроллер который находится в микросервисе rest-service он обрабатывает активацию пользователя." />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил регистрацию пользователей.&#10;В микросервис node добавил AppUserService в котором обрабатывается запрос на регистрацию(registerUser), происходит установка и проверка на корректность email и отправка запроса на микросервис mail-service(setEmail) чтобы тот отправил на почту сообщение с ссылкой на контроллер который находится в микросервисе rest-service он обрабатывает активацию пользователя." />
+    <MESSAGE value="Добавил команду на изменение email пользователя." />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил команду на изменение email пользователя." />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
