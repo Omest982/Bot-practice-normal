@@ -10,9 +10,9 @@ import org.example.repository.AppPhotoRepository;
 import org.example.service.FileService;
 import org.springframework.stereotype.Service;
 
-@Service
 @RequiredArgsConstructor
 @Slf4j
+@Service
 public class FileServiceImpl implements FileService {
     private final AppDocumentRepository appDocumentRepository;
     private final AppPhotoRepository appPhotoRepository;

@@ -10,9 +10,9 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 
 import static org.example.model.RabbitQueue.*;
 
-@Service
 @RequiredArgsConstructor
 @Slf4j
+@Service
 public class UpdateConsumerImpl implements UpdateConsumer {
 
     private final MainService mainService;

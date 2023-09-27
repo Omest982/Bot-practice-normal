@@ -20,9 +20,9 @@ import java.util.Optional;
 import static org.example.entity.enums.UserStatus.BASIC_STATUS;
 import static org.example.entity.enums.UserStatus.WAIT_FOR_EMAIL_STATUS;
 
-@Service
 @RequiredArgsConstructor
 @Slf4j
+@Service
 public class AppUserServiceImpl implements AppUserService {
     private final AppUserRepository appUserRepository;
     private final CryptoTool cryptoTool;

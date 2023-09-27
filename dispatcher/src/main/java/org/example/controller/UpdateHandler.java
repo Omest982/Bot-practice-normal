@@ -2,7 +2,6 @@ package org.example.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.model.RabbitQueue;
 import org.example.service.UpdateProducer;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -11,9 +10,9 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 
 import static org.example.model.RabbitQueue.*;
 
-@Component
 @RequiredArgsConstructor
 @Slf4j
+@Component
 public class UpdateHandler {
     private final TelegramBot telegramBot;
     private final UpdateProducer updateProducer;

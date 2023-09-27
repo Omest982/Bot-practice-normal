@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 
-@RestController
 @RequestMapping("/file")
 @Slf4j
 @RequiredArgsConstructor
+@RestController
 public class FileController {
     private final FileService fileService;
 

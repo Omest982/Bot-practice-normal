@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Service
 @RequiredArgsConstructor
+@Service
 public class UserActivationServiceImpl implements UserActivationService {
     private final AppUserRepository appUserRepository;
     private final CryptoTool cryptoTool;

@@ -26,8 +26,8 @@ import static org.example.entity.enums.UserStatus.*;
 import static org.example.service.enums.BotCommands.*;
 
 @RequiredArgsConstructor
-@Service
 @Slf4j
+@Service
 public class MainServiceImpl implements MainService {
     private final RawDataRepository rawDataRepository;
     private final AppUserRepository appUserRepository;

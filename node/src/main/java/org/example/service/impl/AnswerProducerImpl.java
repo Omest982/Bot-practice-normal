@@ -8,8 +8,8 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 import static org.example.model.RabbitQueue.ANSWER_MESSAGE_UPDATE;
 
-@Service
 @RequiredArgsConstructor
+@Service
 public class AnswerProducerImpl implements AnswerProducer {
     private final RabbitTemplate rabbitTemplate;
     @Override

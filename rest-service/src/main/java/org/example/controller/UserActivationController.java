@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
+@RestController
 public class UserActivationController {
     private final UserActivationService userActivationService;
 

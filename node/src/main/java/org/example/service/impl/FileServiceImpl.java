@@ -25,9 +25,9 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-@Service
 @Slf4j
 @RequiredArgsConstructor
+@Service
 public class FileServiceImpl implements FileService {
     @Value("${token}")
     private String token;

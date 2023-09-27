@@ -15,6 +15,9 @@
         <maven.compiler.source>19</maven.compiler.source>
         <maven.compiler.target>19</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <hypersistence-utils-hibernate-62.version>3.5.0</hypersistence-utils-hibernate-62.version>
+        <json.version>20230618</json.version>
+        <javax-mail.version>1.4.7</javax-mail.version>
     </properties>
 
     <dependencies>
@@ -25,7 +28,7 @@
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>common-rabbitmq</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${common-rabbitmq.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -39,37 +42,36 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>${data-jpa.version}</version>
         </dependency>
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>common-jpa</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${common-jpa.version}</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.6.0</version>
+            <version>${postgresql.version}</version>
         </dependency>
         <dependency>
             <groupId>io.hypersistence</groupId>
             <artifactId>hypersistence-utils-hibernate-62</artifactId>
-            <version>3.5.0</version>
+            <version>${hypersistence-utils-hibernate-62.version}</version>
         </dependency>
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20230618</version>
+            <version>${json.version}</version>
         </dependency>
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>common-utils</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${common-utils.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
-            <version>1.4.7</version>
+            <version>${javax-mail.version}</version>
         </dependency>
 
     </dependencies>

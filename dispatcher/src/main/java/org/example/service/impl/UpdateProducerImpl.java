@@ -7,9 +7,9 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
-@Service
 @RequiredArgsConstructor
 @Slf4j
+@Service
 public class UpdateProducerImpl implements UpdateProducer {
     private final RabbitTemplate rabbitTemplate;
     @Override

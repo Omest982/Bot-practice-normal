@@ -9,8 +9,8 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 import static org.example.model.RabbitQueue.ANSWER_MESSAGE_UPDATE;
 
-@Service
 @RequiredArgsConstructor
+@Service
 public class AnswerConsumerImpl implements AnswerConsumer {
     private final UpdateHandler updateHandler;
     @Override

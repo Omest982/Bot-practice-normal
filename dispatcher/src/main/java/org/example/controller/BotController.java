@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
-@RestController
 @RequiredArgsConstructor
+@RestController
 public class BotController {
 
     private final UpdateHandler updateHandler;
