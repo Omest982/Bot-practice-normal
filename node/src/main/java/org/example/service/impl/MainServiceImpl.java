@@ -41,7 +41,7 @@ public class MainServiceImpl implements MainService {
         AppUser appUser = findOrSaveAppUser(update);
         String text = update.getMessage().getText();
         Long chatId = update.getMessage().getChatId();
-        String result = "";
+        String result;
 
         BotCommands command = BotCommands.fromValue(text);
         if (CANCEL.equals(command)){
@@ -63,6 +63,7 @@ public class MainServiceImpl implements MainService {
         saveRawData(update);
         AppUser appUser = findOrSaveAppUser(update);
         Long chatId = update.getMessage().getChatId();
+
         if(isNotAllowedToSendContent(chatId, appUser)){
             return;
         }
@@ -85,6 +86,7 @@ public class MainServiceImpl implements MainService {
         saveRawData(update);
         AppUser appUser = findOrSaveAppUser(update);
         Long chatId = update.getMessage().getChatId();
+
         if(isNotAllowedToSendContent(chatId, appUser)){
             return;
         }

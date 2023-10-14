@@ -4,31 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4fbc9c06-1dac-465d-881e-337450767424" name="Changes" comment="Исправил накопление временных файлов до закрытия программы.&#10;Теперь при запросе файлы выгружаются через ServletOutputStream.">
+    <list default="true" id="4fbc9c06-1dac-465d-881e-337450767424" name="Changes" comment="Небольшой рефактор кода&#10;Вынес все версии dependencies в properties.&#10;Сделал аннотации более читабельными.">
+      <change afterPath="$PROJECT_DIR$/node/src/test/java/org/example/service/impl/MainServiceImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common-jpa/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common-jpa/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common-utils/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common-utils/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dispatcher/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dispatcher/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dispatcher/src/main/java/org/example/controller/BotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/dispatcher/src/main/java/org/example/controller/BotController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dispatcher/src/main/java/org/example/controller/TelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/dispatcher/src/main/java/org/example/controller/TelegramBot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dispatcher/src/main/java/org/example/controller/UpdateHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/dispatcher/src/main/java/org/example/controller/UpdateHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dispatcher/src/main/java/org/example/service/impl/AnswerConsumerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/dispatcher/src/main/java/org/example/service/impl/AnswerConsumerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dispatcher/src/main/java/org/example/service/impl/UpdateProducerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/dispatcher/src/main/java/org/example/service/impl/UpdateProducerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mail-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mail-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mail-service/src/main/java/org/example/controller/MailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mail-service/src/main/java/org/example/controller/MailController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mail-service/src/main/java/org/example/service/impl/MailSenderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mail-service/src/main/java/org/example/service/impl/MailSenderServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/node/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/AnswerProducerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/AnswerProducerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/AppUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/AppUserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/FileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/FileServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/entity/RawData.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-jpa/src/main/java/org/example/entity/RawData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/repository/RawDataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-jpa/src/main/java/org/example/repository/RawDataRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/MainServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/MainServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/UpdateConsumerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/UpdateConsumerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rest-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest-service/src/main/java/org/example/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/controller/FileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest-service/src/main/java/org/example/controller/UserActivationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/controller/UserActivationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest-service/src/main/java/org/example/service/impl/FileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/service/impl/FileServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rest-service/src/main/java/org/example/service/impl/UserActivationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/service/impl/UserActivationServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +91,7 @@
       <recent name="org.example.configuration" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.NodeApplication">
+  <component name="RunManager" selected="JUnit.MainServiceImplTest">
     <configuration name="DispatcherApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.DispatcherApplication" />
       <module name="dispatcher" />
@@ -161,12 +144,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="node" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.service.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.service.impl" />
+      <option name="MAIN_CLASS_NAME" value="org.example.service.impl.MainServiceImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MainServiceImplTest" />
         <item itemvalue="Application.NodeApplication" />
-        <item itemvalue="Application.MailApplication" />
-        <item itemvalue="Application.RestServiceApplication" />
         <item itemvalue="Application.DispatcherApplication" />
+        <item itemvalue="Application.RestServiceApplication" />
+        <item itemvalue="Application.MailApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -270,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695462736074</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Небольшой рефактор кода&#10;Вынес все версии dependencies в properties.&#10;Сделал аннотации более читабельными.">
+      <created>1695818298579</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1695818298579</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -301,7 +307,8 @@
     <MESSAGE value="Добавил регистрацию пользователей.&#10;В микросервис node добавил AppUserService в котором обрабатывается запрос на регистрацию(registerUser), происходит установка и проверка на корректность email и отправка запроса на микросервис mail-service(setEmail) чтобы тот отправил на почту сообщение с ссылкой на контроллер который находится в микросервисе rest-service он обрабатывает активацию пользователя." />
     <MESSAGE value="Добавил команду на изменение email пользователя." />
     <MESSAGE value="Исправил накопление временных файлов до закрытия программы.&#10;Теперь при запросе файлы выгружаются через ServletOutputStream." />
-    <option name="LAST_COMMIT_MESSAGE" value="Исправил накопление временных файлов до закрытия программы.&#10;Теперь при запросе файлы выгружаются через ServletOutputStream." />
+    <MESSAGE value="Небольшой рефактор кода&#10;Вынес все версии dependencies в properties.&#10;Сделал аннотации более читабельными." />
+    <option name="LAST_COMMIT_MESSAGE" value="Небольшой рефактор кода&#10;Вынес все версии dependencies в properties.&#10;Сделал аннотации более читабельными." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -316,6 +323,11 @@
           <line>11</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/dispatcher/src/main/java/org/example/controller/BotController.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -324,5 +336,10 @@
         <watch expression="response.headers" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Bot_practice_normal$NodeApplication.ic" NAME="NodeApplication Coverage Results" MODIFIED="1696765059939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>org.example.utils.*</FILTER>
+    </SUITE>
   </component>
 </project>
