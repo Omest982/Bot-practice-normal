@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.entity.AppDocument;
 import org.example.entity.AppPhoto;
 import org.example.entity.BinaryContent;
+import org.example.exception.FileNotFoundException;
 import org.example.service.FileService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,21 +26,18 @@ public class FileController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/get-doc")
     public void getDoc(@RequestParam("id") String id, HttpServletResponse response){
-        //TODO для формирования badRequest добавить ControllerAdvice
         AppDocument appDocument = fileService.getAppDocument(id);
         if (appDocument == null){
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            return;
+            throw new FileNotFoundException("Document not found!");
         }
         response.setContentType(MediaType.parseMediaType(appDocument.getMimeType()).toString());
         response.setHeader("Content-disposition", "attachment; filename=" + appDocument.getDocName());
         response.setStatus(HttpServletResponse.SC_OK);
 
         BinaryContent binaryContent = appDocument.getBinaryContent();
-        try{
-            ServletOutputStream out = response.getOutputStream();
+
+        try(ServletOutputStream out = response.getOutputStream()){
             out.write(binaryContent.getFileAsArrayOfBites());
-            out.close();
         } catch (IOException e) {
             log.error(e.getMessage());
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
@@ -49,21 +47,18 @@ public class FileController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/get-photo")
     public void getPhoto(@RequestParam("id") String id, HttpServletResponse response){
-        //TODO для формирования badRequest добавить ControllerAdvice
         AppPhoto appPhoto = fileService.getAppPhoto(id);
         if (appPhoto == null){
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            return;
+            throw new FileNotFoundException("Photo not found!");
         }
         response.setContentType(MediaType.IMAGE_JPEG.toString());
         response.setHeader("Content-disposition", "attachment;");
         response.setStatus(HttpServletResponse.SC_OK);
 
         BinaryContent binaryContent = appPhoto.getBinaryContent();
-        try{
-            ServletOutputStream out = response.getOutputStream();
+
+        try(ServletOutputStream out = response.getOutputStream()){
             out.write(binaryContent.getFileAsArrayOfBites());
-            out.close();
         } catch (IOException e) {
             log.error(e.getMessage());
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

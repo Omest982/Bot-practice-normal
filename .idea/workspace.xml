@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4fbc9c06-1dac-465d-881e-337450767424" name="Changes" comment="Небольшой рефактор кода&#10;Вынес все версии dependencies в properties.&#10;Сделал аннотации более читабельными.">
+    <list default="true" id="4fbc9c06-1dac-465d-881e-337450767424" name="Changes" comment="Небольшой рефактор кода.&#10;&#10;Вынес rawData в common-jpa. &#10;Подправил зависимости.">
       <change afterPath="$PROJECT_DIR$/node/src/test/java/org/example/service/impl/MainServiceImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/exception/ControllerExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/exception/ErrorMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/exception/FileNotFoundException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common-jpa/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common-jpa/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/node/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/entity/RawData.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-jpa/src/main/java/org/example/entity/RawData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/repository/RawDataRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-jpa/src/main/java/org/example/repository/RawDataRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/MainServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/node/src/main/java/org/example/service/impl/MainServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rest-service/src/main/java/org/example/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/rest-service/src/main/java/org/example/controller/FileController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,8 +70,8 @@
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-19&quot;,
     &quot;last_opened_file_path&quot;: &quot;G:/Коды/Bot-practice-normal/rest-service/src/main/resources&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -91,7 +91,7 @@
       <recent name="org.example.configuration" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MainServiceImplTest">
+  <component name="RunManager" selected="Application.DispatcherApplication">
     <configuration name="DispatcherApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.DispatcherApplication" />
       <module name="dispatcher" />
@@ -161,11 +161,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MainServiceImplTest" />
-        <item itemvalue="Application.NodeApplication" />
         <item itemvalue="Application.DispatcherApplication" />
-        <item itemvalue="Application.RestServiceApplication" />
         <item itemvalue="Application.MailApplication" />
+        <item itemvalue="Application.RestServiceApplication" />
+        <item itemvalue="Application.NodeApplication" />
+        <item itemvalue="JUnit.MainServiceImplTest" />
       </list>
     </recent_temporary>
   </component>
@@ -276,7 +276,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695818298579</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Небольшой рефактор кода.&#10;&#10;Вынес rawData в common-jpa. &#10;Подправил зависимости.">
+      <created>1697285010875</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1697285010875</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -308,7 +315,8 @@
     <MESSAGE value="Добавил команду на изменение email пользователя." />
     <MESSAGE value="Исправил накопление временных файлов до закрытия программы.&#10;Теперь при запросе файлы выгружаются через ServletOutputStream." />
     <MESSAGE value="Небольшой рефактор кода&#10;Вынес все версии dependencies в properties.&#10;Сделал аннотации более читабельными." />
-    <option name="LAST_COMMIT_MESSAGE" value="Небольшой рефактор кода&#10;Вынес все версии dependencies в properties.&#10;Сделал аннотации более читабельными." />
+    <MESSAGE value="Небольшой рефактор кода.&#10;&#10;Вынес rawData в common-jpa. &#10;Подправил зависимости." />
+    <option name="LAST_COMMIT_MESSAGE" value="Небольшой рефактор кода.&#10;&#10;Вынес rawData в common-jpa. &#10;Подправил зависимости." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -322,11 +330,6 @@
           <url>file://$PROJECT_DIR$/node/src/main/java/org/example/service/impl/UpdateConsumerImpl.java</url>
           <line>11</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/dispatcher/src/main/java/org/example/controller/BotController.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

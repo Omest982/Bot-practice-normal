@@ -48,7 +48,7 @@ public class MainServiceImpl implements MainService {
             result = cancelProcess(appUser);
         } else if (BASIC_STATUS.equals(appUser.getStatus())) {
             result = processServiceCommand(appUser, command);
-        }else if(WAIT_FOR_EMAIL_STATUS.equals(appUser.getStatus())){
+        } else if(WAIT_FOR_EMAIL_STATUS.equals(appUser.getStatus())){
             result = appUserService.setEmail(appUser, text);
         } else {
             log.error("Unknown user state " + appUser.getStatus());
