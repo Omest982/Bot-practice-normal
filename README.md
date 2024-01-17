@@ -1,3 +1,14 @@
+<h2 align="center">👾Telegram bot👾</h2>
+
+## 👩‍💻 Technologies Used
+☕ Java
+🌱 Spring Boot
+🌱🛢️ Spring Data JPA
+🗎 Swagger
+🐬 MySQL
+🐋 Docker
+🌶️ Lombok
+
 # Bot-practice-normal
 Телеграм бот который может сохранять в БД и отдавать обратно фото и документы, регистрировать пользователя через email сообщение.
 
