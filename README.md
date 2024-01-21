@@ -15,7 +15,8 @@ Telegram Bot created for self study. The bot has abilities to process prepared c
 * ✈️ Telegram API
 
 ## 🛢️ Database structure
-![Untitled (1)](https://github.com/Omest982/Bot-practice-normal/assets/93486447/6693f6e9-4143-4cf5-8c75-e981a3a90e62)
+![Bot-db](https://github.com/Omest982/Bot-practice-normal/assets/93486447/c0563526-c2f8-4094-9051-12b54e8b53fc)
+
 
 ## 🔍 Microservices structure
 ![image](https://github.com/Omest982/Bot-practice-normal/assets/93486447/8437f952-507f-4551-818c-f29e6437cc3b)
